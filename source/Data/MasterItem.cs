@@ -36,13 +36,18 @@ public class MasterItem : CsvData<MasterItemParam> {
 
 	private Dictionary<int, MasterItemParam> dict = new Dictionary<int, MasterItemParam>();
 
+	protected override void afterRecievedSpreadSheet()
+	{
+		base.afterRecievedSpreadSheet();
+		SetupDict();
+	}
+
 	public MasterItemParam Get(int _itemId)
 	{
 		MasterItemParam retParam = null;
 		dict.TryGetValue(_itemId, out retParam);
 		return retParam;
 	}
-
 	public void SetupDict()
 	{
 		dict.Clear();

@@ -9,8 +9,10 @@ public class DataCharaParam : CsvDataParam
 	public int job_id { get; set; }
 	public int party_id { get; set; }
 
-	public string name { get; set; }
-	public string sex { get; set; }     // 文字列で持たせるメリットある？
+	public int hp { get; set; }
+	public int hp_max { get; set; }
+	public int mp { get; set; }
+	public int mp_max { get; set; }
 
 	public int atk { get; set; }
 	public int def { get; set; }
@@ -32,6 +34,16 @@ public class DataCharaParam : CsvDataParam
 }
 
 public class DataChara : CsvData<DataCharaParam> {
+
+	public const string FILENAME = "data/chara";
+	public DataChara()
+	{
+		if (Load(FILENAME) == false)
+		{
+			LoadResources("data/chara_sample");
+			Save(FILENAME);
+		}
+	}
 
 
 
