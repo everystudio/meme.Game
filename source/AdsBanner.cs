@@ -21,6 +21,34 @@ public class AdsBanner : MonoBehaviour {
 	BannerView viewTate = null;        // 縦画面
 	BannerView viewYoko = null;        // 横画面
 
+	public int m_iHideCount;
+	public void Show(bool _bFlag)
+	{
+		if(_bFlag)
+		{
+			m_iHideCount -= 1;
+			if(m_iHideCount <= 0)
+			{
+				showAdBanner(DeviceOrientationDetector.Instance.orientation);
+			}
+		}
+		else
+		{
+			if( 0 == m_iHideCount)
+			{
+				if (viewYoko != null)
+				{
+					viewYoko.Hide();
+				}
+				if(viewTate != null)
+				{
+					viewTate.Hide();
+				}
+			}
+			m_iHideCount += 1;
+		}
+	}
+
 	void showAdBanner(DeviceOrientationDetector.ORIENTATION _orientation)
 	{
 		if( _orientation == DeviceOrientationDetector.ORIENTATION.TATE)
@@ -69,12 +97,16 @@ public class AdsBanner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		m_iHideCount = 0;
 		DeviceOrientationDetector.Instance.OnChangeOrientation.AddListener(OnChangedOrientation);
 	}
 
 	private void OnChangedOrientation(DeviceOrientationDetector.ORIENTATION _orientation)
 	{
-		showAdBanner(_orientation);
+		if (m_iHideCount == 0)
+		{
+			showAdBanner(_orientation);
+		}
 	}
 	private void View_OnAdLoaded(object sender, System.EventArgs e)
 	{

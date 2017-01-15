@@ -28,7 +28,15 @@ public class UIStatusDetail : CPanel {
 
 		float width = CanvasSize.Instance.canvasHeight * 640.0f / 1136.0f;
 		m_imgChara.rectTransform.sizeDelta = new Vector2(width, 0);
+
+		AdsManager.Instance.ShowBanner(false);
 		
+	}
+
+	protected override void panelEndStart()
+	{
+		base.panelEndStart();
+		AdsManager.Instance.ShowBanner(true);
 	}
 }
 
