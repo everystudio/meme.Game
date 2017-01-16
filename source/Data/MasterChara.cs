@@ -26,7 +26,7 @@ public class MasterChara : CsvData<MasterCharaParam> {
 		dict.Clear();
 		foreach (MasterCharaParam param in list)
 		{
-			Debug.LogError(param.chara_id);
+			//Debug.LogError(param.chara_id);
 			dict.Add(param.chara_id, param);
 		}
 	}
