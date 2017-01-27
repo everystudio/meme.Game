@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using EveryStudioLibrary;
 
 public class DataManager : DataManagerBase<DataManager> {
@@ -44,6 +45,15 @@ public class DataManager : DataManagerBase<DataManager> {
 
 	// 連絡用
 	public DataCharaParam selectedDataCharaParam { get; set; }
+
+	public Text m_debugPrint;
+	public Text m_debugPrint2;
+	public SkitRoot skitroot;
+	void Update()
+	{
+		m_debugPrint.text = skitroot.SkitCanvasHeightOriginal.ToString();
+		m_debugPrint2.text = skitroot.SkitCanvasHeightMax.ToString();
+	}
 
 }
 

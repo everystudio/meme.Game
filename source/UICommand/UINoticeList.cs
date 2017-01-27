@@ -12,6 +12,7 @@ public class UINoticeList : CPanel {
 
 	protected override void panelStart()
 	{
+		SkitConnector.Instance.root.Initialize("1MeYvualTlwUmGrO9Wx9CcWlQCCTZ3aVxmZa1Gm33O_A", "oc91q9y", "notice_tutorial");
 		base.panelStart();
 
 		foreach(BannerNotice notice in m_bannerNoticeList)

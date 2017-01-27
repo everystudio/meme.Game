@@ -24,11 +24,13 @@ public class AdsBanner : MonoBehaviour {
 	public int m_iHideCount;
 	public void Show(bool _bFlag)
 	{
+		Debug.LogError(string.Format("showbanner:_bFlag={0} , hidecount={1}", _bFlag,m_iHideCount));
 		if(_bFlag)
 		{
 			m_iHideCount -= 1;
 			if(m_iHideCount <= 0)
 			{
+				m_iHideCount = 0;
 				showAdBanner(DeviceOrientationDetector.Instance.orientation);
 			}
 		}

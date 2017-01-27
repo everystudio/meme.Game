@@ -7,7 +7,9 @@ using GoogleMobileAds.Api;
 
 public class AdsManager : Singleton<AdsManager>
 {
-	private AdsBanner m_adsBannerGameBottom;	
+	[SerializeField]
+	private SkitRoot m_skitRoot;
+	private AdsBanner m_adsBannerGameBottom;
 
 	void loadedScene(Scene scenename, LoadSceneMode SceneMode)
 	{
@@ -19,6 +21,20 @@ public class AdsManager : Singleton<AdsManager>
 		m_adsBannerGameBottom = null;
 		//Debug.LogError(SceneManager.GetActiveScene().name);
 		SceneManager.sceneLoaded += loadedScene;
+		Debug.LogError("AdsManager.Initialize");
+		m_skitRoot.OnSkitStart.AddListener(OnSkitStart);
+		m_skitRoot.OnSkitFinish.AddListener(OnSkitFinish);
+
+	}
+
+	public void OnSkitStart()
+	{
+		ShowBanner(false);
+	}
+
+	public void OnSkitFinish()
+	{
+		ShowBanner(true);
 	}
 
 	private void cleanup()

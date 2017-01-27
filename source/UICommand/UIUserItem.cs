@@ -9,6 +9,8 @@ public class UIUserItem : CPanel {
 
 	protected override void panelStart()
 	{
+		SkitConnector.Instance.root.Initialize("1MeYvualTlwUmGrO9Wx9CcWlQCCTZ3aVxmZa1Gm33O_A", "oc91q9y", "item_tutorial");
+
 		base.panelStart();
 
 		foreach (BannerUserItem param in m_bannerUserItemList)
