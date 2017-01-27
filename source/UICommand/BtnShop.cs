@@ -11,15 +11,22 @@ public class BtnShop : MonoBehaviour {
 	private Text m_txtName;
 	public UnityEvent OnClick = new UnityEvent();
 
+	private Button m_btn = null;
+
 	private int m_iRetryCount;
 
 	public void Initialize( string _strKey)
 	{
 		m_iRetryCount = 0;
-		gameObject.GetComponent<Button>().onClick.AddListener(()=>
+
+		if (m_btn == null)
 		{
-			OnClick.Invoke();
-		});
+			m_btn = gameObject.GetComponent<Button>();
+			m_btn.onClick.AddListener(() =>
+			{
+				OnClick.Invoke();
+			});
+		}
 		StartCoroutine(setText(_strKey));
 	}
 
