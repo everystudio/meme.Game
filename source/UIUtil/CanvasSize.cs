@@ -6,6 +6,11 @@ public class CanvasSize : Singleton<CanvasSize> {
 
 	[SerializeField]
 	private RectTransform rt;
+	public override void Initialize()
+	{
+		base.Initialize();
+		SetDontDestroy(false);
+	}
 
 	public float canvasWidth
 	{

@@ -22,17 +22,17 @@ public class AdsManager : Singleton<AdsManager>
 		//Debug.LogError(SceneManager.GetActiveScene().name);
 		SceneManager.sceneLoaded += loadedScene;
 		Debug.LogError("AdsManager.Initialize");
-		m_skitRoot.OnSkitStart.AddListener(OnSkitStart);
-		m_skitRoot.OnSkitFinish.AddListener(OnSkitFinish);
+		m_skitRoot.OnSkitStarted.AddListener(OnSkitStarted);
+		m_skitRoot.OnSkitFinished.AddListener(OnSkitFinished);
 
 	}
 
-	public void OnSkitStart()
+	public void OnSkitStarted()
 	{
 		ShowBanner(false);
 	}
 
-	public void OnSkitFinish()
+	public void OnSkitFinished()
 	{
 		ShowBanner(true);
 	}

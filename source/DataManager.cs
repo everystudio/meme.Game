@@ -24,6 +24,7 @@ public class DataManager : DataManagerBase<DataManager> {
 
 	public override void Initialize()
 	{
+		Application.targetFrameRate = 60;
 		SetDontDestroy(true);
 		base.Initialize();
 		masterChara = new MasterChara();

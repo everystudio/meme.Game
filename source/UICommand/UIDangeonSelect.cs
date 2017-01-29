@@ -11,6 +11,12 @@ public class UIDangeonSelect : CPanel {
 	[SerializeField]
 	GridLayoutGroup gridLayoutGroup;
 
+	[SerializeField]
+	private List<BannerDungeon> listBannerDungeon = new List<BannerDungeon>();
+
+	[SerializeField]
+	private GameObject m_goContents;
+
 	protected override void awake()
 	{
 		base.awake();
@@ -33,6 +39,22 @@ public class UIDangeonSelect : CPanel {
 	protected override void panelStart()
 	{
 		OnChangeOrientation(DeviceOrientationDetector.Instance.orientation);
+		if (0 < listBannerDungeon.Count)
+		{
+			foreach (BannerDungeon banner in listBannerDungeon)
+			{
+				Destroy(banner.gameObject);
+			}
+		}
+		listBannerDungeon.Clear();
+
+		for ( int i = 0; i < 1; i++)
+		{
+			BannerDungeon script = PrefabManager.Instance.MakeScript<BannerDungeon>("prefab/BannerDungeon", m_goContents);
+			script.Initialize(i);
+			listBannerDungeon.Add(script);
+		}
+
 		/*
 		SkitConnector.Instance.root.Initialize("1MeYvualTlwUmGrO9Wx9CcWlQCCTZ3aVxmZa1Gm33O_A", "oc91q9y", "notice_tutorial");
 		base.panelStart();

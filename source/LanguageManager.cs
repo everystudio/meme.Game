@@ -21,6 +21,12 @@ public class LanguageManager : Singleton<LanguageManager> {
 			}
 		}
 	}
+
+	public override void Initialize()
+	{
+		base.Initialize();
+		SetDontDestroy(true);
+	}
 	[SerializeField]
 	private string m_strLanguage = "ja";
 	private string m_strLanguagePre = "ja";
