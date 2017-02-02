@@ -9,11 +9,17 @@ public class AdsBanner : MonoBehaviour {
 	string adUnitIdTate = "unused";
 	string adUnitIdYoko = "unused";
 #elif UNITY_ANDROID
-    string adUnitIdTate = "ca-app-pub-5869235725006697/4481993169";
-	string adUnitIdYoko = "ca-app-pub-5869235725006697/2917861565";
+    //string adUnitIdTate = "ca-app-pub-5869235725006697/4481993169";
+	//string adUnitIdYoko = "ca-app-pub-5869235725006697/2917861565";
+
+    string adUnitIdTate = "ca-app-pub-3940256099942544/6300978111";
+	string adUnitIdYoko = "ca-app-pub-3940256099942544/6300978111";
 #elif UNITY_IPHONE
-    string adUnitIdTate = "ca-app-pub-5869235725006697/5958726364";
-	string adUnitIdYoko = "ca-app-pub-5869235725006697/1301527568";
+    //string adUnitIdTate = "ca-app-pub-5869235725006697/5958726364";
+	//string adUnitIdYoko = "ca-app-pub-5869235725006697/1301527568";
+
+	string adUnitIdTate = "ca-app-pub-3940256099942544/2934735716";
+	string adUnitIdYoko = "ca-app-pub-3940256099942544/2934735716";
 #else
     string adUnitIdTate = "unexpected_platform";
 	string adUnitIdYoko = "unused";
