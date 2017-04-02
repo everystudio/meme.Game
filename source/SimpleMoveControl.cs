@@ -9,6 +9,7 @@ public class SimpleMoveControl : MonoBehaviour
 	public float jumpSpeed = 8.0F;
 	public float rotateSpeed = 10f;
 	public float gravity = 20.0F;
+	private float MOVE_TIME = 0.5f;
 
 	private Vector3 moveDirection = Vector3.zero;
 	private CharacterController controller;
@@ -38,11 +39,32 @@ public class SimpleMoveControl : MonoBehaviour
 
 	public void GoForward( float _fValue)
 	{
+		Debug.LogError("GoForward");
+		iTween.ValueTo(gameObject, iTween.Hash(
+			"time", MOVE_TIME, "from" , MOVE_TIME, "to" , MOVE_TIME, 
+			"onupdate", "OnUpdateForward", "oncomplete", "OnForwardEnd", "oncompletetarget", gameObject));
 		m_fMove = _fValue;
+	}
+	private void OnUpdateForward()
+	{
+	}
+	private void OnForwardEnd()
+	{
+		m_fMove = 0.0f;
 	}
 	public void GoSlide(float _fValue)
 	{
+		iTween.ValueTo(gameObject, iTween.Hash(
+			"time", MOVE_TIME, "from", MOVE_TIME, "to", MOVE_TIME,
+			"onupdate", "OnUpdateSlide", "oncomplete", "OnSlideEnd", "oncompletetarget", gameObject));
 		m_fSlide = _fValue;
+	}
+	private void OnUpdateSlide()
+	{
+	}
+	private void OnSlideEnd()
+	{
+		m_fSlide = 0.0f;
 	}
 
 	public void TurnLeft()
@@ -100,8 +122,8 @@ public class SimpleMoveControl : MonoBehaviour
 			}
 			moveDirection *= speed;
 		}
-		m_fMove = 0.0f;
-		m_fSlide = 0.0f;
+		//m_fMove = 0.0f;
+		//m_fSlide = 0.0f;
 	}
 
 	//カメラ軸に沿った移動コントロール
